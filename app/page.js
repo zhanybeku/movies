@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 
 import MovieCarousel from "@components/MovieCarousel";
-import MovieCard from "@components/MovieCard";
 
 const Home = () => {
   const [movieList, setMovieList] = useState([]);

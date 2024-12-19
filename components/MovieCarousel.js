@@ -4,11 +4,10 @@ import MovieCard from "./MovieCard";
 
 const MovieCarousel = ({ movies }) => {
   return (
-    <Carousel className="mt-5 rounded-xl w-[80%] h-[70vh] bg-red-400">
+    <Carousel className="mt-5 rounded-xl w-[80%] h-[70vh]">
       {movies.map(movie => 
         <MovieCard key={movie.id} movie={movie} />
       )}
-      
     </Carousel>
   );
 };
