@@ -2,31 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 
+import MovieCarousel from "@components/MovieCarousel";
 import MovieCard from "@components/MovieCard";
 
 const Home = () => {
-  const accessToken = process.env.TMDB_ACCESS_TOKEN;
-
   const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const url =
-        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
-      const options = {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      };
       try {
-        const response = await fetch(url, options);
+        const response = await fetch("/api/movies/top");
         const data = await response.json();
-        const results = data.results;
-        console.log(results);
-
-        const randomMovies = getRandomMovies(results, 5);
+        const randomMovies = getRandomMovies(data.results, 5);
         setMovieList(randomMovies);
       } catch (e) {
         console.error(e);
@@ -49,13 +36,7 @@ const Home = () => {
         The place for all the movie information <br />
         you will ever need
       </h2>
-      <div className="h-[70vh] w-[80%] bg-red-400 rounded-xl">
-        <div className="grid grid-cols-2 gap-4 mt-10">
-          {movieList.map((movie) => 
-            <MovieCard key={movie.id} movie={movie}/>
-          )}
-        </div>
-      </div>
+      <MovieCarousel movies={movieList}/>
     </div>
   );
 };
