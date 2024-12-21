@@ -10,7 +10,7 @@ const Nav = () => {
           <input 
             type="text"
             placeholder='Need something, honey?'
-            className='rounded-md px-2 w-[195px] text-gray-600'
+            className='rounded-md px-2 w-[195px] text-gray-600 mr-2'
           />
           <Button value="Search" />
         </form>
